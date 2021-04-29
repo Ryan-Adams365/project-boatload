@@ -1,0 +1,4470 @@
+{
+	"info": {
+		"_postman_id": "bcc34f4f-f941-4c7a-a202-63749d62a6e6",
+		"name": "adamsrya_project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9a92e97a-2c8f-45d7-956a-e750568d92ff",
+						"exec": [
+							"pm.test(\"200 status code\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get users: no Accept header",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2ff2de1b-05bb-4de9-8adc-6e7f212d30cb",
+						"exec": [
+							"pm.test(\"200 status code\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get users: invalid Accept header",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fc2b5802-d914-4c95-aec9-30a4824f81ba",
+						"exec": [
+							"pm.test(\"406 status code\", function () {\r",
+							"    pm.response.to.have.status(406);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "text/html",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get boats: user_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "54a5d4c7-d33a-453c-a0be-b193cffb59f0",
+						"exec": [
+							"pm.test(\"200 status code\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"number of results is valid\", function () {\r",
+							"    pm.expect(pm.response.json()[1][\"total_results\"]).to.eq(0);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get boats: no Accept header",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b4227759-dba5-43d0-aba8-20799e5da0c4",
+						"exec": [
+							"pm.test(\"200 status code\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/boats",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get boats: invalid Accept header",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bec7f3d3-dfca-4171-b9a6-52cb686d7508",
+						"exec": [
+							"pm.test(\"406 status code\", function () {\r",
+							"    pm.response.to.have.status(406);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "text/html"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get boats: missing jwt",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c8f1191e-2982-4aa3-9c44-0645c8f6b66a",
+						"exec": [
+							"pm.test(\"401 status code\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get boats: invalid jwt",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "217868ba-5efb-4db2-a65c-25ce877e4c24",
+						"exec": [
+							"pm.test(\"401 status code\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bad_jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post boat_1: user_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c754bbcf-afd0-44b6-8948-b8ff83ba2b24",
+						"exec": [
+							"pm.test(\"201 status code\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.environment.set(\"user1_boat1\", pm.response.json()[\"id\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Boat 1\",\r\n    \"type\": \"Boat 1\",\r\n    \"length\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/boats",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post boat: invalid Accept header",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9d403f3e-6e9c-4c54-8a06-ac9a88dd2a0a",
+						"exec": [
+							"pm.test(\"406 status code\", function () {\r",
+							"    pm.response.to.have.status(406);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "text/html",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Boat 1\",\r\n    \"type\": \"Boat 1\",\r\n    \"length\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/boats",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post boat: missing jwt",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0cf3fda7-d685-4424-a5d3-25198e0d6f74",
+						"exec": [
+							"pm.test(\"401 status code\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Boat 1\",\r\n    \"type\": \"Boat 1\",\r\n    \"length\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/boats",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post boat: invalid jwt",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "01e91798-867b-4b19-a1f1-62b7dbe62eb5",
+						"exec": [
+							"pm.test(\"401 status code\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bad_jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Boat 1\",\r\n    \"type\": \"Boat 1\",\r\n    \"length\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/boats",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post boat_2: user_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7e3744f4-0f74-4d38-ba49-502db7606646",
+						"exec": [
+							"pm.test(\"201 status code\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.environment.set(\"user1_boat2\", pm.response.json()[\"id\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Boat 2\",\r\n    \"type\": \"Boat 2\",\r\n    \"length\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/boats",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post boat_3: user_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6e49bd3e-6b00-4e21-a971-bc2a4585f77e",
+						"exec": [
+							"pm.test(\"201 status code\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.environment.set(\"user1_boat3\", pm.response.json()[\"id\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Boat 3\",\r\n    \"type\": \"Boat 3\",\r\n    \"length\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/boats",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post boat_4: user_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3a99c618-e492-439a-8fab-5fffbc7f305d",
+						"exec": [
+							"pm.test(\"201 status code\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.environment.set(\"user1_boat4\", pm.response.json()[\"id\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Boat 4\",\r\n    \"type\": \"Boat 4\",\r\n    \"length\": 4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/boats",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post boat_5: user_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "74aa8f6d-c29b-4f72-ab45-6d275124b82c",
+						"exec": [
+							"pm.test(\"201 status code\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.environment.set(\"user1_boat5\", pm.response.json()[\"id\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Boat 5\",\r\n    \"type\": \"Boat 5\",\r\n    \"length\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/boats",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post boat_6: user_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "163849dc-a05e-48f1-8815-565be1be9342",
+						"exec": [
+							"pm.test(\"201 status code\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.environment.set(\"user1_boat6\", pm.response.json()[\"id\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Boat 6\",\r\n    \"type\": \"Boat 6\",\r\n    \"length\": 6\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/boats",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post boat_1: user_2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b98907d3-ebfc-4c61-9ce5-651a7350b380",
+						"exec": [
+							"pm.test(\"201 status code\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.environment.set(\"user2_boat1\", pm.response.json()[\"id\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Boat 1\",\r\n    \"type\": \"Boat 1\",\r\n    \"length\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/boats",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get boats: user_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fa83388b-7a1f-45af-aa4e-c76bc27ecd8d",
+						"exec": [
+							"pm.test(\"200 status code\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"number of results is valid\", function () {\r",
+							"    pm.expect(pm.response.json()[1][\"total_results\"]).to.eq(6);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get boat_1: user_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a88aa220-eaf1-4144-a2fd-1b40e89102f9",
+						"exec": [
+							"pm.test(\"200 status code\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get boat_1: user_2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ce91d9ac-8d36-46b6-af3c-8b73e4e3f05f",
+						"exec": [
+							"pm.test(\"200 status code\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats/{{user2_boat1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user2_boat1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get boat_1: missing jwt",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a9d2efc4-08c9-4367-bd94-814883fdceb9",
+						"exec": [
+							"pm.test(\"401 status code\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get boat_1: invalid jwt",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1890720f-2df9-4d23-b1f1-eac052dbd0c0",
+						"exec": [
+							"pm.test(\"401 status code\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bad_jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get boat_1: user_2 jwt",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "265fae58-598a-4acb-8a0c-290bf729c8ec",
+						"exec": [
+							"pm.test(\"403 status code\", function () {\r",
+							"    pm.response.to.have.status(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get bad_boat_id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "81aa172b-0682-4fcb-9116-b22a3c58df70",
+						"exec": [
+							"pm.test(\"404 status code\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats/{{bad_boat_id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{bad_boat_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put boat_1: user_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "70670992-cb13-4329-8ab5-aba77ae7715a",
+						"exec": [
+							"pm.test(\"303 status code\", function () {\r",
+							"    pm.response.to.have.status(303);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Put 1\",\r\n    \"type\": \"Put 1\",\r\n    \"length\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put boat_1: missing jwt",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3eec5bba-7ff7-4877-9bdc-68c6872ca50f",
+						"exec": [
+							"pm.test(\"401 status code\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Put 1\",\r\n    \"type\": \"Put 1\",\r\n    \"length\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put boat_1: invalid jwt",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "101fbbe0-e22e-4dfd-b571-4d7edfebb2e7",
+						"exec": [
+							"pm.test(\"401 status code\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bad_jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Put 1\",\r\n    \"type\": \"Put 1\",\r\n    \"length\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put boat_1: user_2 jwt",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cd84e3f9-9918-4ea6-bc55-fe1daddf0356",
+						"exec": [
+							"pm.test(\"403 status code\", function () {\r",
+							"    pm.response.to.have.status(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Put 1\",\r\n    \"type\": \"Put 1\",\r\n    \"length\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put boat_1: bad_boat_id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c4ca18d7-f801-48ef-bc22-b96c709fc5cb",
+						"exec": [
+							"pm.test(\"404 status code\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Put 1\",\r\n    \"type\": \"Put 1\",\r\n    \"length\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/boats/{{bad_boat_id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{bad_boat_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put all boats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e90aacb4-97a4-4d45-bba7-18ebde572a00",
+						"exec": [
+							"pm.test(\"405 status code\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Put 1\",\r\n    \"type\": \"Put 1\",\r\n    \"length\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/boats",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patch boat_1: user_1 Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "360635fa-e9a6-409e-9384-679c4d7f18c9",
+						"exec": [
+							"pm.test(\"303 status code\", function () {\r",
+							"    pm.response.to.have.status(303);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Patch 1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patch boat_1: missing jwt Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "720d8c18-7da5-445d-97cb-9b6f1e02f463",
+						"exec": [
+							"pm.test(\"401 status code\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Patch 1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patch boat_1: invalid jwt Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "09198752-4656-41fa-aea5-609e766f425e",
+						"exec": [
+							"pm.test(\"401 status code\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bad_jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Patch 1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patch boat_1: user_2 jwt Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "055afd54-2529-439e-8321-5064d102df7e",
+						"exec": [
+							"pm.test(\"403 status code\", function () {\r",
+							"    pm.response.to.have.status(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Patch 1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patch boat_1: bad_boat_id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a071ca04-c3f4-4191-94e3-9bcc5d1af125",
+						"exec": [
+							"pm.test(\"404 status code\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Patch 1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/boats/{{bad_boat_id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{bad_boat_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patch all boats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4adf5193-6fcb-4c26-bc9f-e8fb3de7e65c",
+						"exec": [
+							"pm.test(\"405 status code\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Patch 1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/boats",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get loads",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0623124a-95f5-4f7d-bc1f-7ef359ebfaf9",
+						"exec": [
+							"pm.test(\"200 status code\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"number of results is valid\", function () {\r",
+							"    pm.expect(pm.response.json()[1][\"total_results\"]).to.eq(0);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/loads",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get loads: no Accept header",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e1f5ac6a-41ca-48ca-9246-b41516a8eb21",
+						"exec": [
+							"pm.test(\"200 status code\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/loads",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get loads: invalid Accept header",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "58435e0a-4efe-4eb7-b26a-db4722456347",
+						"exec": [
+							"pm.test(\"406 status code\", function () {\r",
+							"    pm.response.to.have.status(406);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "text/html"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/loads",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post load_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1efd8bf6-cb99-4e16-aa2c-91e2a954fb59",
+						"exec": [
+							"pm.test(\"201 status code\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.environment.set(\"load1\", pm.response.json()[\"id\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"weight\": 1,\r\n  \"content\": \"Load 1\",\r\n  \"delivery_date\": \"1/18/1990\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/loads",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post load: invalid Accept header",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "79afab61-bafd-4e98-9f66-20ce3eca4176",
+						"exec": [
+							"pm.test(\"406 status code\", function () {\r",
+							"    pm.response.to.have.status(406);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "text/html"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"weight\": 1,\r\n  \"content\": \"Load 1\",\r\n  \"delivery_date\": \"1/18/1990\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/loads",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post load_2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d840c964-3917-4d89-988f-bf2ac6e7d165",
+						"exec": [
+							"pm.test(\"201 status code\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.environment.set(\"load2\", pm.response.json()[\"id\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"weight\": 2,\r\n  \"content\": \"Load 2\",\r\n  \"delivery_date\": \"1/18/1990\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/loads",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post load_3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3ac34967-27b4-4e5b-9e17-e700c2423848",
+						"exec": [
+							"pm.test(\"201 status code\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.environment.set(\"load3\", pm.response.json()[\"id\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"weight\": 3,\r\n  \"content\": \"Load 3\",\r\n  \"delivery_date\": \"1/18/1990\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/loads",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post load_4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d01805a3-d87f-4a41-8e9b-08dc81cde0ee",
+						"exec": [
+							"pm.test(\"201 status code\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.environment.set(\"load4\", pm.response.json()[\"id\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"weight\": 4,\r\n  \"content\": \"Load 4\",\r\n  \"delivery_date\": \"1/18/1990\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/loads",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post load_5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a92c306d-8612-47e6-9415-fd187ab3a46d",
+						"exec": [
+							"pm.test(\"201 status code\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.environment.set(\"load5\", pm.response.json()[\"id\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"weight\": 5,\r\n  \"content\": \"Load 5\",\r\n  \"delivery_date\": \"1/18/1990\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/loads",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post load_6",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "34d0d0a6-8ad2-4089-8d51-0d999dfc5b25",
+						"exec": [
+							"pm.test(\"201 status code\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.environment.set(\"load6\", pm.response.json()[\"id\"]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"weight\": 6,\r\n  \"content\": \"Load 6\",\r\n  \"delivery_date\": \"1/18/1990\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/loads",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get load_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "79e3ee6f-fc10-4d42-96b2-05d32812f637",
+						"exec": [
+							"pm.test(\"200 status code\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/loads/{{load1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads",
+						"{{load1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get bad_load_id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4d05ddd1-1221-4590-8042-38dd89b948b5",
+						"exec": [
+							"pm.test(\"404 status code\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/loads/{{bad_load_id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads",
+						"{{bad_load_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get loads",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "984fbe9e-692e-41d7-a96d-1453f5475393",
+						"exec": [
+							"pm.test(\"200 status code\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"number of results is valid\", function () {\r",
+							"    pm.expect(pm.response.json()[1][\"total_results\"]).to.eq(6);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/loads",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put load_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "77cb6bbc-ddae-4d34-9bd7-de8d0cb61437",
+						"exec": [
+							"pm.test(\"303 status code\", function () {\r",
+							"    pm.response.to.have.status(303);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"content\": \"Put 1\",\r\n    \"weight\": 1,\r\n    \"delivery_date\": \"1/18/1990\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/loads/{{load1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads",
+						"{{load1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put bad_load_id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7dcabe17-c2dc-4471-b585-79bf1a9cc950",
+						"exec": [
+							"pm.test(\"404 status code\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"content\": \"Put 1\",\r\n    \"weight\": 1,\r\n    \"delivery_date\": \"1/18/1990\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/loads/{{bad_load_id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads",
+						"{{bad_load_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put all loads",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a0fab7b4-06f2-48ad-8cd2-3df1b79073e9",
+						"exec": [
+							"pm.test(\"405 status code\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"content\": \"Put 1\",\r\n    \"weight\": 1,\r\n    \"delivery_date\": \"1/18/1990\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/loads",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patch load_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "26eb27d4-b461-428c-a2c5-ccd8b0e3cf85",
+						"exec": [
+							"pm.test(\"303 status code\", function () {\r",
+							"    pm.response.to.have.status(303);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"content\": \"Patch 1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/loads/{{load1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads",
+						"{{load1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patch bad_load_id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7ef9eea4-3802-4f57-99bc-1f88665221a3",
+						"exec": [
+							"pm.test(\"404 status code\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"content\": \"Patch 1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/loads/{{bad_load_id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads",
+						"{{bad_load_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patch all loads",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "13f96019-24de-4d1a-8a2b-0709c4baf402",
+						"exec": [
+							"pm.test(\"405 status code\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"content\": \"Patch 1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/loads",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put load_1 in boat_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "744cb70f-b3fe-49d6-819d-e5e70be1cff2",
+						"exec": [
+							"pm.test(\"204 status code\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}/loads/{{load1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}",
+						"loads",
+						"{{load1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get boat_1: user_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d8e8a0f4-7888-47e9-8a02-d985a768cff0",
+						"exec": [
+							"pm.test(\"200 status code\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"load is correct\", function () {\r",
+							"    pm.expect((pm.response.json()[\"loads\"][0][\"id\"]).toString()).to.eq(pm.environment.get(\"load1\"));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get load_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "feb38658-87fa-4f05-a270-a7c2d87e2bbb",
+						"exec": [
+							"pm.test(\"200 status code\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"carrier is correct\", function () {\r",
+							"    pm.expect((pm.response.json()[\"carrier\"][\"id\"]).toString()).to.eq(pm.environment.get(\"user1_boat1\"));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/loads/{{load1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads",
+						"{{load1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put load_1 in boat_1 again",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0e1d383d-3528-40aa-b564-68323c09dab8",
+						"exec": [
+							"pm.test(\"403 status code\", function () {\r",
+							"    pm.response.to.have.status(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}/loads/{{load1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}",
+						"loads",
+						"{{load1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put load_1 in boat_2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9e389445-f659-4859-ae02-68242a7d76ed",
+						"exec": [
+							"pm.test(\"403 status code\", function () {\r",
+							"    pm.response.to.have.status(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat2}}/loads/{{load1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat2}}",
+						"loads",
+						"{{load1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put load_1 in bad_boat_id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9abf50a1-7663-4bfc-b2ad-8590bba15bf1",
+						"exec": [
+							"pm.test(\"404 status code\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats/{{bad_boat_id}}/loads/{{load1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{bad_boat_id}}",
+						"loads",
+						"{{load1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put bad_load_id in boat_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9a9d5db2-772a-4f8c-bb7c-83bc7d1f2687",
+						"exec": [
+							"pm.test(\"404 status code\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}/loads/{{bad_load_id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}",
+						"loads",
+						"{{bad_load_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete bad_load_id in boat_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4367ad6d-3e10-4017-a4ea-1005ee576bfb",
+						"exec": [
+							"pm.test(\"404 status code\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}/loads/{{bad_load_id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}",
+						"loads",
+						"{{bad_load_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete load_1 in bad_boat_id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "33ff84e9-7a4c-43f9-926c-ad30650fa3ce",
+						"exec": [
+							"pm.test(\"404 status code\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats/{{bad_boat_id}}/loads/{{load1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{bad_boat_id}}",
+						"loads",
+						"{{load1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete load_1 in boat_2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aec8ff3a-3a5f-4ae0-9107-4a5488c33784",
+						"exec": [
+							"pm.test(\"404 status code\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat2}}/loads/{{load1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat2}}",
+						"loads",
+						"{{load1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete load_1 in boat_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a436f890-2d64-4e66-8b23-980b511e6161",
+						"exec": [
+							"pm.test(\"204 status code\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}/loads/{{load1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}",
+						"loads",
+						"{{load1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get boat_1: user_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "308d0be1-092e-46f0-ba20-6a93dfad6b64",
+						"exec": [
+							"pm.test(\"200 status code\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"load is gone\", function () {\r",
+							"    pm.expect(pm.response.json()[\"loads\"]).to.be.empty;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get load_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fec50d86-ef83-4df1-8d77-83a5a3b2262c",
+						"exec": [
+							"pm.test(\"200 status code\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"carrier is correct\", function () {\r",
+							"    pm.expect(pm.response.json()[\"carrier\"]).to.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/loads/{{load1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads",
+						"{{load1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete all boats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "41071eec-e328-4f1a-8eee-fb58ec313881",
+						"exec": [
+							"pm.test(\"405 status code\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete boat_1: missing jwt",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "67dc8e85-f16d-4579-a08e-58c9aad23355",
+						"exec": [
+							"pm.test(\"401 status code\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete boat_1: invalid jwt",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dbb448a2-fe8b-48cb-ba89-8b6929697a6c",
+						"exec": [
+							"pm.test(\"401 status code\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bad_jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put load_1 in boat_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e40e4adc-c60b-4fdc-945b-7668cbb1f32a",
+						"exec": [
+							"pm.test(\"204 status code\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}/loads/{{load1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}",
+						"loads",
+						"{{load1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put load_2 in boat_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "148830e8-7a28-4d50-bf29-7f9475df0478",
+						"exec": [
+							"pm.test(\"204 status code\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}/loads/{{load2}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}",
+						"loads",
+						"{{load2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete user_1 boat_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7d75170f-9b4d-4785-b3ad-321913d6e98e",
+						"exec": [
+							"pm.test(\"204 status code\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get load_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4e35fc07-d85b-4b2f-a88d-0129fb81dc05",
+						"exec": [
+							"pm.test(\"200 status code\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"carrier is correct\", function () {\r",
+							"    pm.expect(pm.response.json()[\"carrier\"]).to.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/loads/{{load1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads",
+						"{{load1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get load_2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "33424029-682d-4605-bf99-04cffcdc160b",
+						"exec": [
+							"pm.test(\"200 status code\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"carrier is correct\", function () {\r",
+							"    pm.expect(pm.response.json()[\"carrier\"]).to.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/loads/{{load2}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads",
+						"{{load2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get boat_1: user_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8ef21726-20f8-4ec3-86e9-2f65632abbb9",
+						"exec": [
+							"pm.test(\"404 status code\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get boat_2: user_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f2067c02-85f7-4f29-8a80-1302de208f05",
+						"exec": [
+							"pm.test(\"200 status code\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat2}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put load_1 in boat_2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bd7db9c9-7258-4848-828c-e65b999f403b",
+						"exec": [
+							"pm.test(\"204 status code\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat2}}/loads/{{load1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat2}}",
+						"loads",
+						"{{load1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete load_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9c5d7106-be45-4bcc-b0e3-e05d852f60fe",
+						"exec": [
+							"pm.test(\"204 status code\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/loads/{{load1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads",
+						"{{load1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get boat_2: user_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7d6735fc-5e0c-4edc-b071-e3144a285541",
+						"exec": [
+							"pm.test(\"200 status code\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"load is gone\", function () {\r",
+							"    pm.expect(pm.response.json()[\"loads\"]).to.be.empty;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat2}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get load_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f5ece2dc-edd6-40d0-bf34-4a60426ab4c2",
+						"exec": [
+							"pm.test(\"404 status code\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/loads/{{load1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads",
+						"{{load1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete user_1 boat_2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cf2a0597-b801-4180-afe0-6ce05b33b302",
+						"exec": [
+							"pm.test(\"204 status code\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat2}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete user_1 boat_3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f1f9b8c8-1c91-49d1-8a5e-666cae71ded5",
+						"exec": [
+							"pm.test(\"204 status code\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat3}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat3}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete user_1 boat_4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "99bcc174-54f9-4022-9961-da855609c884",
+						"exec": [
+							"pm.test(\"204 status code\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat4}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat4}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete user_1 boat_5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1bd40560-40ab-4c44-b261-4aa2a70be86b",
+						"exec": [
+							"pm.test(\"204 status code\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat5}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat5}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete user_1 boat_6",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fddf27b2-15fd-4a21-877f-808170d42ba3",
+						"exec": [
+							"pm.test(\"204 status code\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat6}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat6}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete user_1 boat_1: 404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "51bc6494-4a31-44b0-b297-c2a9c559247d",
+						"exec": [
+							"pm.test(\"404 status code\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/boats/{{user1_boat1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user1_boat1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete user_2 boat_1: user_1 jwt",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6c04663c-d922-4112-892f-448120f6bb4c",
+						"exec": [
+							"pm.test(\"403 status code\", function () {\r",
+							"    pm.response.to.have.status(403);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/boats/{{user2_boat1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user2_boat1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete user_2 boat_1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ac190ad8-8e17-4d97-8cb0-be668bf37eaf",
+						"exec": [
+							"pm.test(\"204 status code\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/boats/{{user2_boat1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boats",
+						"{{user2_boat1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete all loads",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b39d49ab-8c05-4c1f-b5bb-98f2c8b9e93c",
+						"exec": [
+							"pm.test(\"405 status code\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/loads",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete load_2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a0ca6f87-7501-49a7-8cde-01b4ca8671ac",
+						"exec": [
+							"pm.test(\"204 status code\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/loads/{{load2}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads",
+						"{{load2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete load_3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1d03eab0-c5d5-457e-abd3-e2482de91dc0",
+						"exec": [
+							"pm.test(\"204 status code\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/loads/{{load3}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads",
+						"{{load3}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete load_4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1729fe2a-9087-4b88-9370-15d88790240b",
+						"exec": [
+							"pm.test(\"204 status code\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/loads/{{load4}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads",
+						"{{load4}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete load_5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "19ecceee-2b16-43b4-bcb2-39e05b5188e9",
+						"exec": [
+							"pm.test(\"204 status code\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/loads/{{load5}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads",
+						"{{load5}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete load_6",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "72394aae-4a43-4f79-8412-a9487b1b2310",
+						"exec": [
+							"pm.test(\"204 status code\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/loads/{{load6}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads",
+						"{{load6}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete load_1: 404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "50ffe79a-43e3-4ae6-a089-f80046f909d8",
+						"exec": [
+							"pm.test(\"404 status code\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/loads/{{load1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"loads",
+						"{{load1}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
